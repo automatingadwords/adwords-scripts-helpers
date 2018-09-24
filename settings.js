@@ -92,11 +92,11 @@ function Setting () {
  
 
  this.parseDateRange = function(SETTINGS) {
-    var YESTERDAY = getAdWordsFormattedDate(1, 'yyyyMMdd');
+    var YESTERDAY = h.getAdWordsFormattedDate(1, 'yyyyMMdd');
     SETTINGS.DATE_RANGE = '20000101,' + YESTERDAY;
   
     if(SETTINGS.DATE_RANGE_LITERAL == 'LAST_N_DAYS') {
-      SETTINGS.DATE_RANGE =  getAdWordsFormattedDate(SETTINGS.N, 'yyyyMMdd') + ',' + YESTERDAY;
+      SETTINGS.DATE_RANGE =  h.getAdWordsFormattedDate(SETTINGS.N, 'yyyyMMdd') + ',' + YESTERDAY;
     }
   
     if(SETTINGS.DATE_RANGE_LITERAL == 'LAST_N_MONTHS') {
