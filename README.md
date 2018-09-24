@@ -10,7 +10,9 @@ You can then pull our changes as you see fit.
 
 ## Usage
 
-Easy. eval("url-to-the-script/bootstrap.js")
+var url = "url-to-the-script/bootstrap.js";
+var content = JSON.parse(UrlFetchApp.fetch(messagesUrl).getContentText());
+eval(content);
 
 It's important files are secure when using eval()!
 
