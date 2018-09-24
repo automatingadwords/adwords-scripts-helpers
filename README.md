@@ -22,9 +22,9 @@ This just evals the below scripts - just load this to pull everything in.
 
 Generic functions for things like logging, checking for numbers, etc.
 
-var h = new helper();
-h.log("hey!");
-h.isNumber("Bricks");//false
+var h = new Helper();  
+h.log("hey!");  
+h.isNumber("Bricks");//false  
 etc...
 
 ## settings.js
