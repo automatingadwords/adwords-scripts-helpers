@@ -1,6 +1,49 @@
 //uses helpers.js
 
 function Setting () {
+  
+  this.processSetting = function (key, value, HEADER,controlSheet){
+   var type = HEADER[key]
+   if(key=="ROW_NUM"){
+     return value;
+   }
+   var h = new Helper();
+   switch(type){
+     case "number":
+        if(h.isNumber(value)){
+          return value
+        }else{
+          throw("Error: Expected a number but recieved " +value+". Please check the settings")
+        }
+        return value
+        break;
+     case "label":
+       return [controlSheet.getRange(3,Object.keys(HEADER).indexOf(key)+1).getValue(),value]
+       break;
+     case "normal":
+       return value
+       break;
+     case "bool":
+       return value == "Yes" ? true : false;
+       break;
+     case "csv":
+       var ret =  value.split(",")
+       ret = ret[0]==""&&ret.length==1?[]:ret;
+       if(ret.length==0){
+         return [];
+       }else{
+         for(var r in ret){
+           ret[r] = String(ret[r]).trim() 
+         }
+       }
+       return ret;
+       break;
+     default:
+       throw("error setting type "+type+" not recognised for "+key)
+ 
+   }
+ }
+
 
   this.scanForAccounts = function(HEADER_TYPES) {
    var map = {};
@@ -76,48 +119,7 @@ function Setting () {
   
   }
  
- this.processSetting = function (key, value, HEADER,controlSheet){
-   var type = HEADER[key]
-   if(key=="ROW_NUM"){
-     return value;
-   }
-   var h = new Helper();
-   switch(type){
-     case "number":
-        if(h.isNumber(value)){
-          return value
-        }else{
-          throw("Error: Expected a number but recieved " +value+". Please check the settings")
-        }
-        return value
-        break;
-     case "label":
-       return [controlSheet.getRange(3,Object.keys(HEADER).indexOf(key)+1).getValue(),value]
-       break;
-     case "normal":
-       return value
-       break;
-     case "bool":
-       return value == "Yes" ? true : false;
-       break;
-     case "csv":
-       var ret =  value.split(",")
-       ret = ret[0]==""&&ret.length==1?[]:ret;
-       if(ret.length==0){
-         return [];
-       }else{
-         for(var r in ret){
-           ret[r] = String(ret[r]).trim() 
-         }
-       }
-       return ret;
-       break;
-     default:
-       throw("error setting type "+type+" not recognised for "+key)
  
-   }
- }
-
 
   
 }
