@@ -83,7 +83,7 @@ function Setting () {
    for(var id in map){
      for(var rowId in map[id]){
        for(var key in map[id][rowId]){
-         map[id][rowId][key] = processSetting(key,map[id][rowId][key], HEADER_TYPES, controlSheet)
+         map[id][rowId][key] = this.processSetting(key,map[id][rowId][key], HEADER_TYPES, controlSheet)
        }
      }
    }
