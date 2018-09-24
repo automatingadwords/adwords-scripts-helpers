@@ -7,6 +7,7 @@ function Helper () {
   * @returns {bool}
   **/
   this.isNumber = function(n) {
+    if(typeof n == "number")return true
     n = n.trim();
     var digits = n.split("")
     for(var d in digits){
@@ -64,6 +65,33 @@ function Helper () {
   this.round = function (num,n) {    
     return +(Math.round(num + "e+"+n)  + "e-"+n);
   }
+
+
+
+   /**
+      * Add editors to the sheet
+      * @param {drive element} - drive element (such as folder or spreadsheet)     
+      * @param {array} - editors to add
+      * @return nothing
+      **/
+  this.addEditors = function (spreadsheet, editors){
+  
+    //check current editors, add if they don't exist
+    var currentEditors = spreadsheet.getEditors()
+    var currentEditorEmails = []
+    for(var c in currentEditors){
+      currentEditorEmails.push(currentEditors[c].getEmail().trim().toLowerCase()); 
+    }
+
+    for(var e in editors){
+      var index = currentEditorEmails.indexOf(editors[e])
+      if(currentEditorEmails.indexOf(editors[e])==-1){
+        spreadsheet.addEditor(editors[e])
+      }
+    }  
+
+  }
+
 
 }
 
