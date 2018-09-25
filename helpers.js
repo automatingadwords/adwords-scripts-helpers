@@ -19,6 +19,19 @@ function Helper () {
     return true
   };
 
+   /**
+  * Calculate ROAS
+  * @param {number} - Conv. Value
+  * @param {number} - Cost
+  * @returns {number}
+  **/
+  this.calculateRoas = function (ConversionValue,Cost){
+    if(Cost == 0)return 0
+    if(ConversionValue == 0)return 0
+    if(Cost > ConversionValue)return 0
+    return ConversionValue/Cost
+  }
+
 
     /**
        * Return the column number of the logs column
