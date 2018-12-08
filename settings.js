@@ -65,6 +65,11 @@ function Setting () {
  
    for(var k in data) {
      //if "run script" is not set to "yes", continue.
+     var idColumn = HEADER.indexOf("ID")
+     var flagColumn = HEADER.indexOf("FLAG")
+     log("id col: " + idColumn)
+     log("flagColumn: " + flagColumn)
+     
      if(data[k][0] == '' || data[k][3].toLowerCase() != 'yes') { continue; }
      var rowNum = parseInt(k,10) + 4;
      var id = data[k][0];
