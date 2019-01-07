@@ -13,7 +13,7 @@ function Setting () {
         if(h.isNumber(value)){
           return value
         }else{
-          throw("Error: Expected a number but recieved " +value+". Please check the settings")
+          throw("Error: Expected a number but recieved '" +value+"' for the key '"+key+"'. Please check the settings")
         }
         return value
         break;
