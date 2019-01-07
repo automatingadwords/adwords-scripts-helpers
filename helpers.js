@@ -79,8 +79,6 @@ function Helper () {
     return +(Math.round(num + "e+"+n)  + "e-"+n);
   }
 
-
-
    /**
       * Add editors to the sheet
       * @param {drive element} - drive element (such as folder or spreadsheet)     
